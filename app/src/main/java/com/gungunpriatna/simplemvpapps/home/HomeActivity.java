@@ -15,12 +15,19 @@ import com.gungunpriatna.simplemvpapps.networking.Service;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends BaseApp implements HomeView {
 
-    private RecyclerView list;
+    @BindView(R.id.list)
+        RecyclerView list;
+    @BindView(R.id.progress)
+        ProgressBar progressBar;
+
     @Inject
     public Service service;
-    ProgressBar progressBar;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +43,7 @@ public class HomeActivity extends BaseApp implements HomeView {
 
     public void renderView() {
         setContentView(R.layout.activity_home);
-        list = findViewById(R.id.list);
-        progressBar = findViewById(R.id.progress);
+        ButterKnife.bind(this);
     }
 
     public void init() {
